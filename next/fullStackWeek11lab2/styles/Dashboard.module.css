@@ -1,0 +1,47 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.tile {
+  padding: 40px;
+  cursor: pointer;
+  text-align: center;
+  height: 100%;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tile h2 {
+  margin-bottom: 0.5rem;
+}
+
+.tile:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.disabledTile {
+  padding: 40px;
+  text-align: center;
+  height: 100%;
+  background-color: #1f1f1f;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.disabledTile h2 {
+  margin-bottom: 0.5rem;
+}
+
+.container {
+  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

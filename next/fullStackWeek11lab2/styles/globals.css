@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+  /* Colors */
+  --color-bg-dark: #0e0f0f;
+  --color-bg-accent-1: #0f2b24;
+  --color-bg-accent-2: #1f5747;
+  --color-primary: #f6d860;
+  --color-primary-hover: #ffe89e;
+  --color-text-light: #f6f4e8;
+  --color-text-dark: #1a1a1a;
+  --color-cyan: #00eaff;
+  --color-cyan-soft: #e8faff;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  
+  /* Typography */
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 2.2rem;
+  --font-size-3xl: 2.8rem;
+  
+  /* Effects */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 20px rgba(246, 216, 96, 0.3);
+  --shadow-glow-strong: 0 0 28px rgba(246, 216, 96, 0.45);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.8s ease;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', 'Lato', sans-serif;
+  margin: 0;
+  background: linear-gradient(-45deg, #0e0f0f, #0f2b24, #0e0f0f, #1f5747);
+  /* background-color: #0f2b24; */
+  background-size: 400% 400%;
+  height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', sans-serif;
+}
