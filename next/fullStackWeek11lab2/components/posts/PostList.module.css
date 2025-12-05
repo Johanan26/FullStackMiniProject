@@ -2,5 +2,5 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  background: #4a0058;
+  background: linear-gradient(-45deg, var(--color-bg-dark), var(--color-bg-accent-1), var(--color-bg-dark), var(--color-bg-accent-2));
 }

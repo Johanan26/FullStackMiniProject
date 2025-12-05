@@ -6,6 +6,7 @@
   align-items: center;
   min-height: 100vh; /* fill the viewport vertically */
   width: 100%;
+  background: linear-gradient(-45deg, var(--color-bg-dark), var(--color-bg-accent-1), var(--color-bg-dark), var(--color-bg-accent-2));
 }
 
 /* === The Card Itself === */
