@@ -88,18 +88,18 @@ export function GlobalContextProvider(props) {
 
         if (command.cmd === 'deletePost') {
             const response = await fetch('/api/delete-post', {
-            method: 'POST',
-            body: JSON.stringify({ _id: command.newVal._id }),
-            headers: { 'Content-Type': 'application/json' },
+                method: 'POST',
+                body: JSON.stringify({ _id: command.newVal._id }),
+                headers: { 'Content-Type': 'application/json' },
             });
 
             const data = await response.json();
             if (data.response === 'success') {
-            setGlobals(prev => {
-                const newGlobals = JSON.parse(JSON.stringify(prev));
-                newGlobals.posts = newGlobals.posts.filter(p => p._id !== command.newVal._id);
-                return newGlobals;
-            });
+                setGlobals(prev => {
+                    const newGlobals = JSON.parse(JSON.stringify(prev));
+                    newGlobals.posts = newGlobals.posts.filter(p => p._id !== command.newVal._id);
+                    return newGlobals;
+                });
             }
         }
         

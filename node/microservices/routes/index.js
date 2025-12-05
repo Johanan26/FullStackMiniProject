@@ -85,30 +85,55 @@ router.post('/readPost', async function (req, res, next) {
 })
 
 // crUd   Should use PUT . . . we'll fix this is Cloud next term
+// router.post('/updatePost', async function (req, res, next) {
+//   let retVal = { response: "fail" }
+//   await posts.findOneAndUpdate({ _id: req.body._id }, req.body,
+//     function (err, res) {
+//       if (!err) {
+//         retVal = { response: "success" }
+//       }
+//     }
+//   )
+//   res.json(retVal);
+// });
+
 router.post('/updatePost', async function (req, res, next) {
-  let retVal = { response: "fail" }
-  await posts.findOneAndUpdate({ _id: req.body._id }, req.body,
-    function (err, res) {
-      if (!err) {
-        retVal = { response: "success" }
-      }
+  let retVal = { response: "fail" };
+ 
+  try {
+    const result = await posts.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body
+    );
+ 
+    if (result) {
+      retVal = { response: "success" };
     }
-  )
-  res.json(retVal);
+ 
+    res.json(retVal);
+  } catch (err) {
+    console.log('Could not update meeting', err);
+    res.status(500).json(retVal);
+  }
 });
 
-// cruD   Should use DELETE . . . we'll fix this is Cloud next term
 router.post('/deletePost', async function (req, res, next) {
-  let retVal = { response: "fail" }
-  await posts.deleteOne({ _id: req.body._id },
-    function (err, res) {
-      if (!err) {
-        retVal = { response: "success" }
-      }
+  let retVal = { response: "fail" };
+ 
+  try {
+    const result = await posts.deleteOne({ _id: req.body._id });
+ 
+    if (result && result.deletedCount > 0) {
+      retVal = { response: "success" };
     }
-  )
-  res.json(retVal);
+ 
+    res.json(retVal);
+  } catch (err) {
+    console.log('Could not delete meeting', err);
+    res.status(500).json(retVal);
+  }
 });
+ 
 
 
 

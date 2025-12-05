@@ -29,7 +29,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: transparent;
+  background: linear-gradient(-45deg, var(--color-bg-dark), var(--color-bg-accent-1), var(--color-bg-dark), var(--color-bg-accent-2));
   box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.55);
 }
 

@@ -7,7 +7,7 @@ function PostList(props) {
       {props.posts.map((post) => (
         <PostItem
           key={post._id}
-          id={post.postId}
+          id={post._id}
           image={post.image}
           title={post.title}
           address={post.address}
