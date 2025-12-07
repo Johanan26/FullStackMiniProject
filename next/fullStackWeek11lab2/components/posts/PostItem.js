@@ -7,36 +7,40 @@ import GlobalContext from '../../pages/store/globalContext';
 function PostItem(props) {
   const globalCtx = useContext(GlobalContext);
   const router = useRouter();
-  const user = globalCtx.theGlobalObject.isLoggedIn;
+  const isLoggedIn = globalCtx.theGlobalObject.isLoggedIn;
+  const loggedInUser = globalCtx.theGlobalObject.loggedInUser;
+  
+  // Check if this post belongs to the logged-in user
+  const isOwnPost = isLoggedIn && loggedInUser && props.userId === loggedInUser.uid;
 
-  function showDetailsHandler() {
+  function showDetailsHandler(e) {
+    // Don't navigate if clicking on action buttons
+    if (e.target.closest('button')) {
+      return;
+    }
     router.push('/' + props.id);
   }
 
-  function editDetailsHandler() {
+  function editDetailsHandler(e) {
+    e.stopPropagation();
     router.push('/posts/edit/' + props.id);
   }
 
-  async function deleteDetailsHandler() {
+  async function deleteDetailsHandler(e) {
+    e.stopPropagation();
     if (!confirm('Are you sure you want to delete this post?')) return;
-
-    // 🪵 Debug info
-    console.log('🪵 PostItem Debug Info:');
-    console.log('props.id:', props.id);
-    console.log('props.postId:', props.postId);
-    console.log('props._id:', props._id);
 
     // ✅ Detect if the ID looks like a valid MongoDB ObjectId (24 hex characters)
     const id = props.id;
     const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
 
-    // 🪵 Show which field we're using for deletion
-    console.log('Deleting post using', isObjectId ? '_id' : 'postId', '→', id);
-
-    // ✅ Send correct field to backend via global context
+    // ✅ Send correct field to backend via global context with userId for ownership verification
     await globalCtx.updateGlobals({
       cmd: 'deletePost',
-      newVal: isObjectId ? { _id: id } : { postId: id },
+      newVal: {
+        ...(isObjectId ? { _id: id } : { postId: id }),
+        userId: loggedInUser?.uid || null
+      },
     });
 
     alert('Post deleted!');
@@ -44,7 +48,13 @@ function PostItem(props) {
 
   return (
     <li className={classes.item}>
-      <Card>
+      <Card noWrapper onClick={showDetailsHandler}>
+        {/* Author at the top */}
+        {props.authorName && (
+          <div className={classes.authorInfo}>
+            <span className={classes.authorName}>@{props.authorName}</span>
+          </div>
+        )}
         <div className={classes.image}>
           <img src={props.image} alt={props.title} />
         </div>
@@ -52,22 +62,17 @@ function PostItem(props) {
           <h3>{props.title}</h3>
           <address>{props.address}</address>
         </div>
-        <div className={classes.actions}>
-          <button onClick={showDetailsHandler}>Show Details</button>
-          <button
-            onClick={editDetailsHandler}
-            disabled={!user}
-            className={!user ? classes.disabled : ''}
-          >
-            Edit Details
-          </button>
-          <button
-            onClick={deleteDetailsHandler}
-            disabled={!user}
-            className={!user ? classes.disabled : ''}
-          >
-            Delete Post
-          </button>
+        <div className={classes.actions} onClick={(e) => e.stopPropagation()}>
+          {isOwnPost && (
+            <>
+              <button onClick={editDetailsHandler}>
+                Edit
+              </button>
+              <button onClick={deleteDetailsHandler}>
+                Delete
+              </button>
+            </>
+          )}
         </div>
       </Card>
     </li>

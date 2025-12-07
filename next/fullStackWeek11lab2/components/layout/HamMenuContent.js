@@ -11,9 +11,19 @@ export default function HamMenuContent(props) {
         return null
     }
 
-    function clicked(webAddress) {
+    async function handleItemClick(item) {
         globalCtx.updateGlobals({ cmd: 'hideHamMenu', newVal: true })
-        router.push(webAddress)
+        
+        if (item.cmd === 'logout') {
+            try {
+                await globalCtx.updateGlobals({ cmd: 'logout' })
+                router.push('/')
+            } catch (error) {
+                console.error('Error logging out:', error)
+            }
+        } else if (item.webAddress) {
+            router.push(item.webAddress)
+        }
     }
 
     function closeMe() {
@@ -21,7 +31,7 @@ export default function HamMenuContent(props) {
     }
 
     let contentJsx = props.contents.map((item, index) => (  //  [{title: 'Meeting 1', webAddress: '/meet1'}, {title: 'Meeting 2', webAddress: '/meet2'}]
-        <div className={classes.menuItem} key={index} onClick={() => clicked(item.webAddress)} >{item.title} </div>
+        <div className={classes.menuItem} key={index} onClick={() => handleItemClick(item)} >{item.title} </div>
     ))
 
     return (

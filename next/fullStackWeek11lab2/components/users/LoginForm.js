@@ -28,15 +28,15 @@ function LoginForm(props) {
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor='email'>Email</label>
-          <input type='text' required id='email' ref={emailInputRef} />
+          <input type='email' required id='email' ref={emailInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor='password'>Password</label>
-          <input type='text' required id='password' ref={passwordInputRef} />
+          <input type='password' required id='password' ref={passwordInputRef} />
         </div>
         
         <div className={classes.actions}>
-          <button>Login</button>
+          <button disabled={props.loading}>{props.loading ? 'Logging in...' : 'Login'}</button>
         </div>
         <p style={{ textAlign: 'center', marginTop: '1rem' }}>
           Don&apos;t have an account?{' '}

@@ -1,9 +1,10 @@
-import { useRef, useEffect } from 'react';
-
+import { useRef, useEffect, useContext } from 'react';
+import GlobalContext from '../../pages/store/globalContext';
 import Card from '../ui/Card';
 import classes from './NewPostForm.module.css';
 
 function NewPostForm(props) {
+  const globalCtx = useContext(GlobalContext);
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -26,6 +27,8 @@ function NewPostForm(props) {
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
+    const loggedInUser = globalCtx.theGlobalObject.loggedInUser;
+
     const postData = {
       _id: props.initialData?._id,
       postId: enteredTitle,
@@ -33,9 +36,19 @@ function NewPostForm(props) {
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
+      userId: loggedInUser?.uid || null,
+      authorName: loggedInUser?.displayName || loggedInUser?.name || 'Anonymous',
     };
 
     props.onAddPost(postData);
+    
+    // Clear form after submission (only if not editing)
+    if (!props.initialData) {
+      titleInputRef.current.value = '';
+      imageInputRef.current.value = '';
+      addressInputRef.current.value = '';
+      descriptionInputRef.current.value = '';
+    }
   }
 
   return (
