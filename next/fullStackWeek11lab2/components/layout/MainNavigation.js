@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 function MainNavigation() {
   const globalCtx = useContext(GlobalContext)
   const user = globalCtx.theGlobalObject.isLoggedIn
+  const loggedInUser = globalCtx.theGlobalObject.loggedInUser
   const count = globalCtx.theGlobalObject.posts.length
 
   function toggleMenuHide() {
@@ -21,8 +22,9 @@ function MainNavigation() {
   // });
 
   const contents = []
-  if (user) {
-    contents.push({ title: `Account: ${user.name}` })
+  if (user && loggedInUser) {
+    contents.push({ title: `Account: ${loggedInUser.name || loggedInUser.email || 'User'}` })
+    contents.push({ title: 'Profile', webAddress: '/profile' })
     contents.push({ title: 'Logout', cmd: 'logout' })
   } else {
     contents.push({ title: 'Login', webAddress: '/login' })
@@ -43,12 +45,13 @@ function MainNavigation() {
           <ul>
             {user ? (
               <>
-                <li><span className={classes.logo}>Posts ({count})</span></li>
+                <li><Link href="/posts">{`Posts (${count})`}</Link></li>
                 <li><span className={classes.userName}>Logged In </span></li>
                 <li><Link href="/dashboard">Dashboard</Link></li>
               </>
             ) : (
               <>
+                <li><Link href="/posts">Posts</Link></li>
                 <li><Link href="/login">Login</Link></li>
                 <li><Link href="/dashboard">Dashboard</Link></li>
               </>
@@ -57,7 +60,7 @@ function MainNavigation() {
         </nav>
 
         <div className={classes.hamburger}>
-          <HamMenu toggleMenuHide={toggleMenuHide} />
+          <HamMenu toggleMenuHide={toggleMenuHide} user={user} loggedInUser={loggedInUser} />
         </div>
       </div>
     </header>

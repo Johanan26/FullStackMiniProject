@@ -1,0 +1,84 @@
+.statusContainer {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 350px;
+}
+
+.statusChecking,
+.statusSuccess,
+.statusError {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.statusChecking {
+    background: rgba(255, 193, 7, 0.9);
+    color: #333;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.statusSuccess {
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    border: 1px solid rgba(76, 175, 80, 0.5);
+}
+
+.statusError {
+    background: rgba(244, 67, 54, 0.9);
+    color: white;
+    border: 1px solid rgba(244, 67, 54, 0.5);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.spinner {
+    font-size: 1.2rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.message {
+    flex: 1;
+}
+
+.message strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.message p {
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+    opacity: 0.95;
+}
+
+.message small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+

@@ -1,7 +1,5 @@
-// /api/new-Post
-
-async function handler(req, res) { // can be called anything you like
-  const response = await fetch('http://localhost:8000/createPost', {
+async function handler(req, res) {
+  const response = await fetch('http://localhost:8000/updateUserProfile', {
     method: 'POST',
     body: JSON.stringify(req.body),
     headers: {
@@ -9,7 +7,8 @@ async function handler(req, res) { // can be called anything you like
     }
   });
   const data = await response.json();
-  res.json(data)
+  res.json(data);
 }
 
 export default handler;
+

@@ -9,39 +9,54 @@
   cursor: pointer;
   text-align: center;
   height: 100%;
-  background-color: #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  color: #333;
 }
 
 .tile h2 {
   margin-bottom: 0.5rem;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.tile p {
+  color: #666;
 }
 
 .tile:hover {
-  background-color: #f8f8f8;
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+  border-color: rgba(102, 126, 234, 0.5);
 }
 
 .disabledTile {
   padding: 40px;
   text-align: center;
   height: 100%;
-  background-color: #1f1f1f;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .disabledTile h2 {
   margin-bottom: 0.5rem;
+  color: #999;
 }
 
 .container {
-  margin: 0 auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);  
+  min-height: calc(100vh - 80px);
+  padding: 3rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }

@@ -53,13 +53,27 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Open Sans', 'Lato', sans-serif;
   margin: 0;
-  background: linear-gradient(-45deg, #0e0f0f, #0f2b24, #0e0f0f, #1f5747);
-  /* background-color: #0f2b24; */
-  background-size: 400% 400%;
-  height: 100vh;
+  padding: 0;
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#__next {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 
 h1,

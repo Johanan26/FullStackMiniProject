@@ -1,4 +1,3 @@
-// pages/index.js
 import { useContext, useEffect, useRef, useState } from 'react'
 import GlobalContext from './store/globalContext'
 import styles from '../styles/Home.module.css'

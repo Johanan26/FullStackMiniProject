@@ -38,18 +38,18 @@ function NewUserForm(props) {
         </div>
         <div className={classes.control}>
           <label htmlFor='email'>Email</label>
-          <input type='text' required id='email' ref={emailInputRef} />
+          <input type='email' required id='email' ref={emailInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor='password'>Password</label>
-          <input type='text' required id='password' ref={passwordInputRef} />
+          <input type='password' required id='password' ref={passwordInputRef} minLength={6} />
         </div>
         <div className={classes.control}>
           <label htmlFor='age'>Age</label>
           <input type='text' required id='age' ref={ageInputRef} />
         </div>
         <div className={classes.actions}>
-          <button>Sign Up</button>
+          <button disabled={props.loading}>{props.loading ? 'Creating account...' : 'Sign Up'}</button>
         </div>
       </form>
     </Card>
