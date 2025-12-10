@@ -42,11 +42,11 @@ function HomePage() {
     },
     {
       title: 'Key Features',
-      text: '• Login & signup with global state\n• Animated dashboard tiles\n• Create, view, and manage posts\n• Responsive design with animated accents.',
+      text: '- Login & signup with global state\n- Persistent Context API showing number of Posts\n- Animated dashboard tiles\n- Create, view, and manage posts\n- Responsive design with animated accents\n- Users can only edit / delete posts they have created',
     },
     {
       title: 'How It Works',
-      text: 'All data (users and posts) flows through a global context and API routes into a MongoDB backend. The UI is built with reusable Card components and smooth transitions.',
+      text: 'All data (users and posts) flows through a global context, Command files in the store folder to separate commands based on functionality, and API routes into a MongoDB backend. The UI is built with reusable Card components, user and post componenets, and smooth transitions. \nWe use firebase for user login authentication and persistent login sessions.',
     },
   ]
 

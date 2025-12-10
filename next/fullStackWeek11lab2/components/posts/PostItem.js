@@ -30,11 +30,11 @@ function PostItem(props) {
     e.stopPropagation();
     if (!confirm('Are you sure you want to delete this post?')) return;
 
-    // ✅ Detect if the ID looks like a valid MongoDB ObjectId (24 hex characters)
+    // Detect if the ID looks like a valid MongoDB ObjectId (24 hex characters)
     const id = props.id;
     const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
 
-    // ✅ Send correct field to backend via global context with userId for ownership verification
+    // Send correct field to backend via global context with userId for ownership verification
     await globalCtx.updateGlobals({
       cmd: 'deletePost',
       newVal: {

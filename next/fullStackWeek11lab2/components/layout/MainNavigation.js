@@ -16,11 +16,6 @@ function MainNavigation() {
     globalCtx.updateGlobals({ cmd: 'hideHamMenu', newVal: false })
   }
 
-  // const contents = []
-  // globalCtx.theGlobalObject.meetings.forEach(element => {
-  //   contents.push({title: element.title, webAddress: '/' + element.meetingId })
-  // });
-
   const contents = []
   if (user && loggedInUser) {
     contents.push({ title: `Account: ${loggedInUser.name || loggedInUser.email || 'User'}` })

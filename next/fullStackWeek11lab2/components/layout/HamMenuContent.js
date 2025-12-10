@@ -30,7 +30,7 @@ export default function HamMenuContent(props) {
         globalCtx.updateGlobals({ cmd: 'hideHamMenu', newVal: true })
     }
 
-    let contentJsx = props.contents.map((item, index) => (  //  [{title: 'Meeting 1', webAddress: '/meet1'}, {title: 'Meeting 2', webAddress: '/meet2'}]
+    let contentJsx = props.contents.map((item, index) => (
         <div className={classes.menuItem} key={index} onClick={() => handleItemClick(item)} >{item.title} </div>
     ))
 
