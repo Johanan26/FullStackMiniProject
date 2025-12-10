@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import GlobalContext from './store/globalContext'
 import styles from '../styles/Home.module.css'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 // Import InteractiveCircle dynamically (client-side only)
 const InteractiveCircle = dynamic(() => import('../components/InteractiveCircle'), { ssr: false })
@@ -65,13 +66,13 @@ function HomePage() {
           <div className={styles.ctaRow}>
             {!user ? (
               <>
-                <a href="/login" className={styles.primaryBtn}>Login</a>
-                <a href="/new-user" className={styles.secondaryBtn}>Sign up</a>
+                <Link href="/login" className={styles.primaryBtn}>Login</Link>
+                <Link href="/new-user" className={styles.secondaryBtn}>Sign up</Link>
               </>
             ) : (
-              <a href="/dashboard" className={styles.primaryBtn}>
+              <Link href="/dashboard" className={styles.primaryBtn}>
                 Go to your dashboard
-              </a>
+              </Link>
             )}
           </div>
         </div>
