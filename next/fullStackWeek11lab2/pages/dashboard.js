@@ -10,9 +10,6 @@ function DashboardPage() {
   const user = globalCtx.theGlobalObject.isLoggedIn
 
   useEffect(() => {
-    // if (!user) {
-    //   router.push('/login')
-    // }
   }, [user, router])
 
   function goCreate() {
@@ -22,11 +19,6 @@ function DashboardPage() {
 
   function goViewAll() {
     router.push('/posts')
-  }
-
-  function goManage() {
-    if(!user) return;
-    router.push('/manage-posts')
   }
 
   return (
@@ -43,13 +35,6 @@ function DashboardPage() {
           <div className={styles.tile} onClick={goViewAll}>
             <h2>View All Posts</h2>
             <p>See all posts in the system.</p>
-          </div>
-        </DashboardCard>
-
-        <DashboardCard>
-          <div className={user ? styles.tile : styles.disabledTile} onClick={goManage}>
-            <h2>Edit / Delete Posts</h2>
-            <p>Manage existing posts.</p>
           </div>
         </DashboardCard>
       </div>
