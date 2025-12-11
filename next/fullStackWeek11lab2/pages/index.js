@@ -66,12 +66,16 @@ function HomePage() {
           <div className={styles.ctaRow}>
             {!user ? (
               <>
-                <Link href="/login" className={styles.primaryBtn}>Login</Link>
-                <Link href="/new-user" className={styles.secondaryBtn}>Sign up</Link>
+                <Link href="/login">
+                  <a className={styles.primaryBtn}>Login</a>
+                </Link>
+                <Link href="/new-user"> 
+                  <a className={styles.secondaryBtn}>Sign up</a>
+                </Link>
               </>
             ) : (
-              <Link href="/dashboard" className={styles.primaryBtn}>
-                Go to your dashboard
+              <Link href="/dashboard">
+                <a className={styles.primaryBtn}> Go to your dashboard</a>
               </Link>
             )}
           </div>
